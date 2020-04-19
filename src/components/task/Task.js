@@ -11,7 +11,7 @@ const styles = {
         padding: "1.5rem",
         borderRadius: 3,
         boxShadow: "var(--shadow-light)",
-        margin: "0 1rem",
+        margin: "1rem 1rem",
         marginBottom: "2rem",
         transition: "all .3s ease-in-out",
         position: "relative",
