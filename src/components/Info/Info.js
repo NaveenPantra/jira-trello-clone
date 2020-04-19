@@ -51,6 +51,7 @@ const styles = {
     },
     heading: {
         fontSize: "1.5rem",
+        animation: "pulse 1s ease-in-out infinite",
     },
     modalIconHolder: {
         fontSize: "2rem",
@@ -113,14 +114,13 @@ const styles = {
 };
 
 const Info = ({classes}) => {
-    const [openModal, setOpenModal] = useState(true);
+    const [openModal, setOpenModal] = useState(false);
     function handleKeyDown(event) {
         if (event.keyCode === 27) {
             setOpenModal(false);
         }
     }
     useEffect(() => {
-        // let isVisited = localStorage.getItem("visited");
         if (openModal) {
             document.addEventListener("keydown", handleKeyDown);
         } else {

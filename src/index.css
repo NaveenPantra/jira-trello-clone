@@ -228,3 +228,19 @@ p {
     transform: translateX(-109%) scale(1);
   }
 }
+@keyframes pulse {
+  0% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1)
+  }
+
+  50% {
+    -webkit-transform: scale3d(1.05,1.05,1.05);
+    transform: scale3d(1.05,1.05,1.05)
+  }
+
+  to {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1)
+  }
+}

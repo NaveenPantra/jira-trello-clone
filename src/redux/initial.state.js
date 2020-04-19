@@ -1,7 +1,7 @@
 import {generateRandomString} from "../utils/helpers";
 
 let IDS = [];
-for (let i = 0; i < 12; i++) {
+for (let i = 0; i < 15; i++) {
     IDS.push(generateRandomString());
 }
 
@@ -20,11 +20,11 @@ const INITIAL_TASKS_LIST = {
     },
     '📱💻🖥️ QA': {
         name: '📱💻🖥️ QA',
-        tasks: IDS.slice(9),
+        tasks: IDS.slice(9, 12),
     },
     "👦🏻👧🏻 UAT 👴🏼👩🏼‍💼👨🏼‍🚀": {
         name: "👦🏻👧🏻 UAT 👴🏼👩🏼‍💼👨🏼‍🚀",
-        tasks: [],
+        tasks: IDS.slice(12),
     },
     '👍👍 Ready For Release': {
         name: '👍👍 Ready For Release',
@@ -94,6 +94,21 @@ const INITIAL_TASKS = {
     },
     [IDS[11]]: {
         ID: IDS[11],
+        taskText: "🙏🏼🙏🏼 Lets Connect on LinkedIN 🙏🏼🙏🏼  https://www.linkedin.com/in/naveenpantra/",
+        isEditing: false
+    },
+    [IDS[12]]: {
+        ID: IDS[12],
+        taskText: "🖊️🖋️✒️ visit my CodePen  https://codepen.io/NaveenPantra",
+        isEditing: false
+    },
+    [IDS[13]]: {
+        ID: IDS[13],
+        taskText: "🤩🤩 Visit My GitHub 🤩🤩 https://github.com/NaveenPantra ",
+        isEditing: false
+    },
+    [IDS[14]]: {
+        ID: IDS[14],
         taskText: "🙏🏼🙏🏼 Lets Connect on LinkedIN 🙏🏼🙏🏼  https://www.linkedin.com/in/naveenpantra/",
         isEditing: false
     },
