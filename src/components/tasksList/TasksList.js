@@ -168,7 +168,7 @@ const TasksList = ({tasksListName, tasks, draggingTask, updateToOfCurrentDraggin
         }, 310);
     }
     function editTaskList() {
-        if (setDeleteEditTaskListName.length === 0) {
+        if (deleteEditTaskListName.length === 0) {
            setEditTaskListHelper("Enter Valid Name");
            return 0;
         }
