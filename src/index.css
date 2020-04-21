@@ -29,6 +29,11 @@
   box-sizing: border-box;
 }
 
+*::selection {
+  background-color: var(--color-text);
+  color: var(--color-grey-light-1);
+}
+
 *::-webkit-scrollbar {
   display: none;
 }

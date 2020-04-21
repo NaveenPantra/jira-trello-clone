@@ -136,10 +136,14 @@ function getLines(str, len = 46) {
 const Task = ({taskText, ID, isEditing, tasksListName, index, classes, toggleEditingText, updateTask, draggingTask, setCurrentDraggingTaskData, updateIndexOfCurrentDraggingTask, deleteTaskID, deleteTask}) => {
     const itemRef = useRef();
     const taskTextRef = useRef();
+    const editTaskTextAreaRef = useRef();
     const [editTaskText, setEditTaskText] = useState(taskText);
     const [isDraggable, setIsDraggable] = useState(false);
     useEffect(() => {
         try {
+            if (isEditing) {
+                editTaskTextAreaRef.current.focus();
+            }
             taskTextRef.current.innerText = taskText;
         } catch(e) {}
     }, [isEditing]);
@@ -152,6 +156,10 @@ const Task = ({taskText, ID, isEditing, tasksListName, index, classes, toggleEdi
     }
     function handleOnDragStart(event) {
         clearPreviousDraggingElements();
+        if (isEditing || !isDraggable) {
+            deleteCurrentDraggingTaskData();
+            return 0;
+        }
         setCurrentDraggingTaskData({ID, from: tasksListName, index, height: event.currentTarget.clientHeight});
         const currentElement = itemRef.current.cloneNode(true);
         currentElement.classList.add("draggingClone");
@@ -202,11 +210,12 @@ const Task = ({taskText, ID, isEditing, tasksListName, index, classes, toggleEdi
             onDragEnd={handleOnDragEnd}
             onDragOver={handleOnDragOver}
             onDragLeave={handleOnDragLeave}
-            onMouseUp={() => {setIsDraggable(false)}}
             ref={itemRef}
             className={`${classes.root} ${isEditing ? classes.isEditing : ""}`}>
             <div className={`${classes.front} ${isEditing ? classes.frontEditing : ""}`}>
                 <p
+                    draggable={false}
+                    onMouseDown={() => {setIsDraggable(false)}}
                     ref={taskTextRef}
                     className={classes.taskText}
                     style={{
@@ -227,6 +236,7 @@ const Task = ({taskText, ID, isEditing, tasksListName, index, classes, toggleEdi
                         style={{
                             cursor: "grab",
                         }}
+                        title={"Drag and Drop"}
                         onMouseDown={() => {setIsDraggable(true)}}
                         onMouseUp={() => {setIsDraggable(false)}}
                         name="hand-right-outline" />
@@ -234,6 +244,7 @@ const Task = ({taskText, ID, isEditing, tasksListName, index, classes, toggleEdi
                         style={{
                             cursor: "pointer",
                         }}
+                        title={"Edit"}
                         onClick={toggleEditTask}
                         name="create-outline" />
                 </div>
@@ -245,6 +256,7 @@ const Task = ({taskText, ID, isEditing, tasksListName, index, classes, toggleEdi
             </div>
             <div className={`${classes.back} ${isEditing ? classes.isEditingBackOpen : ""}`}>
                 <textarea
+                    ref={editTaskTextAreaRef}
                     value={editTaskText}
                     onChange={e => {setEditTaskText(e.target.value)}}
                     name={ID}
