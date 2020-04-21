@@ -35,7 +35,7 @@ const styles = {
     taskText: {
         fontSize: "1.4rem",
         whiteSpace: 'normal',
-        wordBreak: "break-all",
+        // wordBreak: "break-all",
         overflowWrap: "break-word",
         paddingBottom: "1.5rem",
         borderBottom: "var(--line)",
@@ -137,6 +137,7 @@ const Task = ({taskText, ID, isEditing, tasksListName, index, classes, toggleEdi
     const itemRef = useRef();
     const taskTextRef = useRef();
     const [editTaskText, setEditTaskText] = useState(taskText);
+    const [isDraggable, setIsDraggable] = useState(false);
     useEffect(() => {
         try {
             taskTextRef.current.innerText = taskText;
@@ -195,12 +196,13 @@ const Task = ({taskText, ID, isEditing, tasksListName, index, classes, toggleEdi
     }
     return (
         <li
-            draggable={!isEditing}
+            draggable={!isEditing && isDraggable}
             id={ID}
             onDragStart={handleOnDragStart}
             onDragEnd={handleOnDragEnd}
             onDragOver={handleOnDragOver}
             onDragLeave={handleOnDragLeave}
+            onMouseUp={() => {setIsDraggable(false)}}
             ref={itemRef}
             className={`${classes.root} ${isEditing ? classes.isEditing : ""}`}>
             <div className={`${classes.front} ${isEditing ? classes.frontEditing : ""}`}>
@@ -225,6 +227,8 @@ const Task = ({taskText, ID, isEditing, tasksListName, index, classes, toggleEdi
                         style={{
                             cursor: "grab",
                         }}
+                        onMouseDown={() => {setIsDraggable(true)}}
+                        onMouseUp={() => {setIsDraggable(false)}}
                         name="hand-right-outline" />
                     <ion-icon
                         style={{
