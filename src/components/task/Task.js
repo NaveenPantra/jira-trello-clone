@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import { connect } from "react-redux";
 import withStyles from "react-jss";
 import {toggleEditingText, updateTask, deleteTask} from "../../redux/tasks/tasks.actions";
@@ -34,6 +34,7 @@ const styles = {
     },
     taskText: {
         fontSize: "1.4rem",
+        whiteSpace: 'normal',
         wordBreak: "break-all",
         overflowWrap: "break-word",
         paddingBottom: "1.5rem",
@@ -73,7 +74,7 @@ const styles = {
     },
     textArea: {
         width: "90%",
-        height: "70%",
+        height: "calc(100% - 3rem)",
         display: "block",
         margin: "3% auto",
         padding: ".6rem",
@@ -134,7 +135,13 @@ function getLines(str, len = 46) {
 
 const Task = ({taskText, ID, isEditing, tasksListName, index, classes, toggleEditingText, updateTask, draggingTask, setCurrentDraggingTaskData, updateIndexOfCurrentDraggingTask, deleteTaskID, deleteTask}) => {
     const itemRef = useRef();
+    const taskTextRef = useRef();
     const [editTaskText, setEditTaskText] = useState(taskText);
+    useEffect(() => {
+        try {
+            taskTextRef.current.innerText = taskText;
+        } catch(e) {}
+    }, [isEditing]);
     function toggleEditTask() {
         toggleEditingText({taskID: ID});
     }
@@ -198,15 +205,14 @@ const Task = ({taskText, ID, isEditing, tasksListName, index, classes, toggleEdi
             className={`${classes.root} ${isEditing ? classes.isEditing : ""}`}>
             <div className={`${classes.front} ${isEditing ? classes.frontEditing : ""}`}>
                 <p
+                    ref={taskTextRef}
                     className={classes.taskText}
                     style={{
                         transform: !isEditing ? "scale(1)" : "scale(0)",
                         opacity: !isEditing ? 1 : 0,
                         transition: "all 0.5s",
                     }}>
-                    {
-                        getLines(taskText).map(line => <>{line}<br /></>)
-                    }
+                    {taskText}
                 </p>
                 <div
                     className={classes.options}
