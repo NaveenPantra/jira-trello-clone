@@ -107,6 +107,13 @@ p {
   /*word-wrap: break-word;*/
 }
 
+a,
+a:active,
+a:visited,
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
 .deletingItem {
   max-height: 0 !important;
   transform-origin: top center;

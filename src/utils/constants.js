@@ -11,6 +11,13 @@ const CLASS_NAMES = {
   SWAP_LIST_LEFT: "swapListLeft",
 };
 
+const SOCIAL_LINKS_TEXT = {
+    GIT_HUB: "https://github.com/NaveenPantra",
+    CODE_PEN: "https://codepen.io/NaveenPantra",
+    LINKED_IN: "https://www.linkedin.com/in/naveenpantra/",
+    SORTING_VIS: "https://sorting-vis.netlify.app/"
+};
+
 const EMOJIS = {
     'SMILES': `
 😀
@@ -2459,4 +2466,4 @@ const EMOJIS = {
 `,
 };
 
-export {LOCAL_STORAGE_KEYS, CLASS_NAMES, EMOJIS};
+export {LOCAL_STORAGE_KEYS, CLASS_NAMES, EMOJIS, SOCIAL_LINKS_TEXT};
