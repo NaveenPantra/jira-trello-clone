@@ -28,9 +28,9 @@ const styles = {
             bottom: 0,
             width: "100%",
             height: "35%",
-            borderRadius: 3,
+            borderRadius: 1,
             transition: "all 0.6s cubic-bezier(0.68, -0.6, 0.32, 1.6)",
-            background: "var(--color-grey-light-3)",
+            background: "#d5d5d5",
         },
         "&:hover": {
             color: "var(--color-grey-light-1)",
@@ -50,8 +50,7 @@ const ExtraLink = ({classes}) => {
                 className={classes.link}
                 href={SOCIAL_LINKS_TEXT.SORTING_VIS}
                 target={"_blank"}
-                rel={"noopener"}>&nbsp;&nbsp;🧠🧠 Sorting Visualization 📊📊&nbsp;&nbsp;</a>
-            .
+                rel={"noopener noreferrer"}>&nbsp;&nbsp;🧠🧠 Sorting Visualization 📊📊&nbsp;&nbsp;</a>
         </footer>
     );
 };

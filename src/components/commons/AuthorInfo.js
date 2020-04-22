@@ -30,6 +30,9 @@ const styles = {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        "& a:hover": {
+            animation: "bounce 1s ease-in-out infinite",
+        },
     },
     icon: {
         display: "flex",
@@ -37,7 +40,12 @@ const styles = {
         marginRight: "1rem",
         fontSize: "2rem",
         color: "var(--color-text)",
-    }
+        transition: "all .3s ease-in-out",
+    },
+    heart: {
+        display: "flex",
+        animation: "heartBeat 1.3s ease-in-out infinite",
+    },
 };
 
 const AuthorInfo = ({classes}) => {
@@ -46,7 +54,7 @@ const AuthorInfo = ({classes}) => {
             <div className={classes.textWrapper}>
                 <p className={classes.text}>Made by&nbsp;</p>
                 <p className={classes.heading}>&nbsp;Naveen Pantra&nbsp;</p>
-                <p className={classes.text}>&nbsp;With&nbsp;&nbsp;<ion-icon name="heart" />&nbsp;</p>
+                <p className={classes.text}>&nbsp;With&nbsp;&nbsp;<span className={classes.heart}><ion-icon name="heart" /></span>&nbsp;</p>
             </div>
             <div className={classes.iconWrapper}>
                 <a

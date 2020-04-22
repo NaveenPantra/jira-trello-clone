@@ -65,6 +65,43 @@ const styles = {
         "& span": {
             fontFamily: "Segoe UI Emoji",
         },
+    },
+    footer: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        fontSize: "1.7rem",
+        paddingTop: "4rem",
+        marginTop: "10rem",
+        borderTop: "1px dashed var(--color-text-light)",
+    },
+    link: {
+        margin: "0 1rem",
+        padding: "0 .5rem",
+        border: "none",
+        fontWeight: 700,
+        position: "relative",
+        transition: "all 1s linear",
+        display: "block",
+        "&:after": {
+            content: '""',
+            zIndex: -1,
+            position: "absolute",
+            left: 0,
+            bottom: 0,
+            width: "100%",
+            height: "35%",
+            borderRadius: 1,
+            transition: "all 0.6s cubic-bezier(0.68, -0.6, 0.32, 1.6)",
+            background: "#d5d5d5",
+        },
+        "&:hover": {
+            color: "var(--color-grey-light-1)",
+            "&:after": {
+                height: "90%",
+                background: "var(--color-text)",
+            },
+        }
     }
 };
 
@@ -101,7 +138,6 @@ const Emojies = ({classes}) => {
                         <h4>🦧 Emojis 🐶</h4>
                         <span onClick={() => {setOpenModal(false)}}>❌</span>
                     </header>
-                    <textarea ref={inputRef} />
                     <section className={classes.drawerBody}>
                         {
                             Object.keys(EMOJIS).map((emojiType, index) => (
@@ -116,6 +152,9 @@ const Emojies = ({classes}) => {
                             ))
                         }
                     </section>
+                    <footer className={classes.footer}>
+                        👩‍💻 👨‍💻 Emojis From <a className={classes.link} href="https://www.getemoji.com" target={"_blank"} rel="noopener noreferrer">www.getemoji.com</a> 👩‍💻 👨‍💻
+                    </footer>
                 </section>
             </Modal>
         </>
