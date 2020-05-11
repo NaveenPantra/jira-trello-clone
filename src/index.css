@@ -147,6 +147,21 @@ a:hover {
   animation: swapListLeft .6s cubic-bezier(0, 0.55, 0.45, 1) forwards;
 }
 
+.draggingMouseElement {
+  position: fixed !important;
+  opacity: 1 !important;
+  transition: none !important;
+  background: white;
+  box-shadow: var(--shadow-light);
+  overflow: hidden;
+}
+
+.collapseMouseParentElement {
+  max-height: 0;
+  padding: 0;
+  margin: 0;
+}
+
 @keyframes enter {
   from {
     transform: scale(1.5);

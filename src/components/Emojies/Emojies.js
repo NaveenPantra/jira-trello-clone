@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useEffect, useState} from 'react';
 import withStyles from "react-jss";
 import Modal from "../commons/Modal";
 import {EMOJIS} from "../../utils/constants";
@@ -102,12 +102,27 @@ const styles = {
                 background: "var(--color-text)",
             },
         }
+    },
+    "@media only screen and (max-width: 480px)": {
+        drawer: {
+            width: "98vw",
+            padding: "4rem 1rem"
+        },
+        drawerHeader: {
+            position: "sticky",
+            top: 0,
+            background: "white",
+            padding: "2rem 0 2rem",
+            boxShadow: "var(--shadow-light)",
+        },
+        footer: {
+            fontSize: "1.5rem",
+        }
     }
 };
 
 const Emojies = ({classes}) => {
-    const [openModal, setOpenModal] = useState(false);
-    const inputRef = useRef();
+    const [openModal, setOpenModal] = useState(true);
     useEffect(() => {
         if (openModal) {
             document.addEventListener("keydown", handleKeyDown);

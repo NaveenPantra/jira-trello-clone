@@ -40,6 +40,7 @@ const styles = {
         background: "var(--color-grey-light-1)",
         zIndex: "var(--z-index-modal-child)",
         width: "90rem",
+        maxWidth: "90vw",
         maxHeight: "80vh",
         overflow: "hidden",
     },
@@ -111,6 +112,28 @@ const styles = {
         display: "inline-block",
         transform: "translateY(1px)",
     },
+    "@media only screen and (max-width: 480px)": {
+        root: {
+            padding: "1rem",
+        },
+        modalHeader: {
+            marginBottom: "1.5rem",
+        },
+        listItem: {
+            margin: "1rem .5rem 3rem",
+            padding: "1rem",
+        },
+        figure: {
+            marginBottom: "1rem",
+        },
+        figcaption: {
+            fontSize: "1.3rem",
+        },
+        button: {
+            fontSize: "1.3rem",
+            padding: "1.5rem 2rem",
+        }
+    }
 };
 
 const Info = ({classes}) => {

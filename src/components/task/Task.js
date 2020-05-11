@@ -133,6 +133,28 @@ function getLines(str, len = 46) {
     return lines;
 }
 
+function setElementToMouse(element, itemRef, remove) {
+    function handleMouseMove(event) {
+        console.log("Mouse move and dowm");
+        const pageX = event.clientX; //+ document.scrollLeft;
+        const pageY = event.clientY; //+ document.scrollTop;
+        element.style.opacity = "1";
+        // element.style.transform = `translate(${pageX}px, ${pageY}px)`;
+        element.style.top = `${pageY}px`;
+        element.style.left = `${pageX}px`;
+    }
+    if (!remove) {
+        const { parentElement } = itemRef.current;
+        document.body.appendChild(element);
+        element.setAttribute("width", `${parentElement.offsetWidth}`);
+        element.setAttribute("height", `${parentElement.offsetHeight}`);
+        element.style.maxWidth = `${parentElement.offsetWidth}px`;
+        element.style.maxHeight = `${parentElement.offsetHeight}px`;
+        element.classList.add("draggingMouseElement");
+        document.addEventListener("mousemove", handleMouseMove);
+    }
+}
+
 const Task = ({taskText, ID, isEditing, tasksListName, index, classes, toggleEditingText, updateTask, draggingTask, setCurrentDraggingTaskData, updateIndexOfCurrentDraggingTask, deleteTaskID, deleteTask}) => {
     const itemRef = useRef();
     const taskTextRef = useRef();
@@ -162,8 +184,10 @@ const Task = ({taskText, ID, isEditing, tasksListName, index, classes, toggleEdi
         }
         setCurrentDraggingTaskData({ID, from: tasksListName, index, height: event.currentTarget.clientHeight});
         const currentElement = itemRef.current.cloneNode(true);
+        const mouseElement = itemRef.current.cloneNode(true);
+        setElementToMouse(mouseElement, itemRef, false);
         currentElement.classList.add("draggingClone");
-        document.body.appendChild(currentElement);
+        // document.body.appendChild(currentElement);
         event.dataTransfer.setDragImage(currentElement, 0, 0);
         event.currentTarget.style.opacity = 0.5;
         event.currentTarget.style.transform = "scale(0.9)";
