@@ -33,8 +33,9 @@ const styles = {
         background: "var(--color-grey-light-1)",
         zIndex: "var(--z-index-modal-child)",
         height: "100vh",
-        width: "50vw",
+        width: "80vw",
         overflow: "scroll",
+        animation: "drawerFromLeft .2s ease-in",
     },
     drawerHeader: {
         display: "flex",

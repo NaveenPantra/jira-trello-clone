@@ -310,3 +310,14 @@ a:hover {
     transform: translate3d(0,-2px,0);
   }
 }
+
+@keyframes drawerFromLeft {
+  from {
+    transform: translate(100%, -50%);
+    opacity: .5;
+  }
+  to {
+    transform: translate(0%, -50%);
+    opacity: 1;
+  }
+}
