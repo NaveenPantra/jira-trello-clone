@@ -4,7 +4,7 @@ This Project is Trello Clone.
 1. Initial state of the application
   ![initial fb87d6a2](https://user-images.githubusercontent.com/26146760/145844575-9c3b2d13-0512-44cb-9d72-b9527fec2d56.png)
 
-2.  You can Drag and Drop Task with in the Task List or across the Task Lists.
+2.  You can Drag and Drop Task with in the Task List or across the Task Lists. (**Uses Drag and Drop API**)
   ![dragDropTask 58bcbdd6](https://user-images.githubusercontent.com/26146760/145844699-b8a8e5ac-f233-49ea-8bd0-cac2c1c9782f.png)
 
 3. You can Swap the Task List with the adjacent Task List by click on arrows.
